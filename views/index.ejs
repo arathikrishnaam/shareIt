@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Share</title>
+</head>
+
+<body>
+    <h1>File Sharing Application</h1>
+
+    <% if (locals.fileLink) { %>
+        <p>Your file is uploaded successfully:</p>
+        <a href="<%= fileLink %>"><%= fileLink %></a>
+        <div>
+            <img src="<%= qrCode %>" alt="QR Code">
+        </div>
+    <% } %>
+
+    <h2>Upload a File</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="file">Choose file:</label>
+        <input type="file" name="file" id="file" required>
+        <label for="password">Set password (optional):</label>
+        <input type="password" name="password" id="password">
+        <label for="expiresAt">Set expiration date (optional):</label>
+        <input type="date" name="expiresAt" id="expiresAt">
+        <button type="submit">Upload</button>
+    </form>
+
+    <h2>Uploaded Files</h2>
+    <ul>
+        <% files.forEach(file => { %>
+            <li>
+                <p><strong>Name:</strong> <%= file.originalName %></p>
+                <p><strong>Downloads:</strong> <%= file.downloadCount %></p>
+                <% if (file.expiresAt) { %>
+                    <p><strong>Expires At:</strong> <%= file.expiresAt.toDateString() %></p>
+                <% } %>
+                <a href="/file/<%= file.id %>">Download</a>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+
+</html>
