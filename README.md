@@ -39,31 +39,7 @@ A secure, feature-rich file sharing platform built with Node.js, Express.js, Mon
 - mongoose: MongoDB object modeling
 - multer: File upload handling
 - nodemon: Development server with auto-restart
-
-## Installation & Setup
-
-### 1. Clone the Repository
-bash
-git clone https://github.com/yourusername/file-sharing-platform.git
-cd file-sharing-platform
-
-
-### 2. Install Dependencies
-bash
-npm install
-
-
-### 3. Configure Environment
-Create a .env file in the project root with the following variables:
-env
-MONGO=mongodb+srv://<username>:<password>@cluster.mongodb.net/filesharing
-PORT=3000
-
-
-### 4. Start the Server
-bash
-npm start
-
+- 
 ### Uploading Files
 1. Navigate to the homepage
 2. Select a file (.jpg, .png, or .pdf)
